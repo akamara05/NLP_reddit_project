@@ -1,168 +1,39 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 3: Web APIs & NLP
-
-### Description
-
-In week four we've learned about a few different classifiers. In week five we'll learn about webscraping, APIs, and Natural Language Processing (NLP). This project will put those skills to the test.
-
-For project 3, your goal is two-fold:
-1. Using [Pushshift's](https://github.com/pushshift/api) API, you'll collect posts from two subreddits of your choosing.
-2. You'll then use NLP to train a classifier on which subreddit a given post came from. This is a binary classification problem.
+# Reddit NLP Project 
 
 
-#### About the API
+## Problem Statement 
+XYZ consulting has been hired by the District of Columbia Courts to conduct research on the types of legal advice being sought after on social media forums such as Reddit. As not many people can afford the high lawyer fees, and pro- bono legal services aren’t as quickly available as most would like, they are seeing an uptick of people seeking legal advice on social media platforms in order to receive immediate responses to their legal issues. Our ultimate goal with this project is to create DC Court’s very own public platform, a repository where non-criminal legal information can be researched and obtained by interested citizens; a ‘one-stop shop’  for common legal questions.  
 
-Pushshift's API is fairly straightforward. For example, if I want the posts from [`/r/boardgames`](https://www.reddit.com/r/boardgames), all I have to do is use the following url: https://api.pushshift.io/reddit/search/submission?subreddit=boardgames
-
-To help you get started, we have a primer video on how to use the API: https://youtu.be/AcrjEWsMi_E
-
-**NOTE:** Pushshift now limits you to 100 posts per request (no longer the 500 in the screencast).
-
----
-
-### Requirements
-
-- Gather and prepare your data using the `requests` library.
-- **Create and compare two models**. One of these must be a Random Forest classifier, however the other can be a classifier of your choosing: logistic regression, KNN, SVM, etc.
-- A Jupyter Notebook with your analysis for a peer audience of data scientists.
-- An executive summary of your results.
-- A short presentation outlining your process and findings for a semi-technical audience.
-
-**Pro Tip:** You can find a good example executive summary [here](https://www.proposify.biz/blog/executive-summary).
-
----
-
-### Necessary Deliverables / Submission
-
-- Code must be in at least one clearly commented Jupyter Notebook.
-- A readme/executive summary in markdown.
-- You must submit your slide deck as a PDF.
-- Materials must be submitted by **9:00 AM on Monday, August 23rd**.
-
----
-
-## Rubric
-Your local instructor will evaluate your project (for the most part) using the following criteria.  You should make sure that you consider and/or follow most if not all of the considerations/recommendations outlined below **while** working through your project.
-
-For Project 3 the evaluation categories are as follows:<br>
-**The Data Science Process**
-- Problem Statement
-- Data Collection
-- Data Cleaning & EDA
-- Preprocessing & Modeling
-- Evaluation and Conceptual Understanding
-- Conclusion and Recommendations
-
-**Organization and Professionalism**
-- Organization
-- Visualizations
-- Python Syntax and Control Flow
-- Presentation
-
-**Scores will be out of 30 points based on the 10 categories in the rubric.** <br>
-*3 points per section*<br>
-
-| Score | Interpretation |
-| --- | --- |
-| **0** | *Project fails to meet the minimum requirements for this item.* |
-| **1** | *Project meets the minimum requirements for this item, but falls significantly short of portfolio-ready expectations.* |
-| **2** | *Project exceeds the minimum requirements for this item, but falls short of portfolio-ready expectations.* |
-| **3** | *Project meets or exceeds portfolio-ready expectations; demonstrates a thorough understanding of every outlined consideration.* |
+This part of the project (phase 1) is our discovery phase. We’d first want to see what language is being used and what sorts of topics are being discussed, all in the efforts of tailoring a product as best as we can, that reflects our citizens’ needs. As much as we want accessibility to information we also want factual information being provided. With this platform we aim to verify and ensure that the information being provided is accurate and reputable. 
 
 
-### The Data Science Process
-
-**Problem Statement**
-- Is it clear what the goal of the project is?
-- What type of model will be developed?
-- How will success be evaluated?
-- Is the scope of the project appropriate?
-- Is it clear who cares about this or why this is important to investigate?
-- Does the student consider the audience and the primary and secondary stakeholders?
-
-**Data Collection**
-- Was enough data gathered to generate a significant result?
-- Was data collected that was useful and relevant to the project?
-- Was data collection and storage optimized through custom functions, pipelines, and/or automation?
-- Was thought given to the server receiving the requests such as considering number of requests per second?
-
-**Data Cleaning and EDA**
-- Are missing values imputed/handled appropriately?
-- Are distributions examined and described?
-- Are outliers identified and addressed?
-- Are appropriate summary statistics provided?
-- Are steps taken during data cleaning and EDA framed appropriately?
-- Does the student address whether or not they are likely to be able to answer their problem statement with the provided data given what they've discovered during EDA?
-
-**Preprocessing and Modeling**
-- Is text data successfully converted to a matrix representation?
-- Are methods such as stop words, stemming, and lemmatization explored?
-- Does the student properly split and/or sample the data for validation/training purposes?
-- Does the student test and evaluate a variety of models to identify a production algorithm (**AT MINIMUM:** Bayes and one other model)?
-- Does the student defend their choice of production model relevant to the data at hand and the problem?
-- Does the student explain how the model works and evaluate its performance successes/downfalls?
-
-**Evaluation and Conceptual Understanding**
-- Does the student accurately identify and explain the baseline score?
-- Does the student select and use metrics relevant to the problem objective?
-- Does the student interpret the results of their model for purposes of inference?
-- Is domain knowledge demonstrated when interpreting results?
-- Does the student provide appropriate interpretation with regards to descriptive and inferential statistics?
-
-**Conclusion and Recommendations**
-- Does the student provide appropriate context to connect individual steps back to the overall project?
-- Is it clear how the final recommendations were reached?
-- Are the conclusions/recommendations clearly stated?
-- Does the conclusion answer the original problem statement?
-- Does the student address how findings of this research can be applied for the benefit of stakeholders?
-- Are future steps to move the project forward identified?
+## Background 
+With increased connectivity and access to a plethora of information disseminated via numerous social media platforms, we are interested in knowing what users are searching/asking about, posting ,and ultimately absorbing. A lot of this information sharing is being done over various social media platforms, a popular one being Reddit, a ” social news aggregation, web content rating, and discussion website “(reddit.com). With a vast array of subbredits (sub-topics) people are able to discuss any topic of their choosing at length, in hopes of getting some sort of feedback, advice (solicited or otherwise), or any other form of interaction. No topic seems out of bounds within these forums. People are willing to seek all sorts of advice, such as where to find the best home décor, what to feed their pets, even advice on sensitive legal matters, from seemingly complete strangers. To assist by being a reputable source, DC Court’s would like to create their own platform geared towards citizens in need of immediate legal information. To achieve that, we’ll be approaching this project in phases. For phase 1, we’ll be using our data science skills to discover the types of legal matters being discussed, the popularity of said topics, and the language surrounding these.   
 
 
-### Organization and Professionalism
+## Scope & Methodology
+__Part 1. Data Collection:__ To begin with, we used API to scrap text data (3,000 observations each) from two subreddits, ‘Legal Advice’  and ‘Casual Conversations’.  We were interested in using the casual conversation subreddit alongside the legal advice  subreddit in order to see if the language used is similar between the two, do topics overlap, are conversations kept “casual” or do we see some legal jargon being used. We used the text classification approach looking to see if models we’ve constructed could first identify what constituted legal discussions compared to just casual conversations. Also, the casual conversations subreddit is text heavy , so used alongside the legal advice subreddit, another text heavy subreddit, we expected great results for our NLP models.
 
-**Project Organization**
-- Are modules imported correctly (using appropriate aliases)?
-- Are data imported/saved using relative paths?
-- Does the README provide a good executive summary of the project?
-- Is markdown formatting used appropriately to structure notebooks?
-- Are there an appropriate amount of comments to support the code?
-- Are files & directories organized correctly?
-- Are there unnecessary files included?
-- Do files and directories have well-structured, appropriate, consistent names?
+__Part 2. Data Cleaning:__ We cleaned the initial dataset being cognizant of missing data or features that may not be necessary for our analysis. As this is a NLP project we ensured to remove and replace any characters and punctuation, essentially stripping the text data to just words with the aim of increasing our model precision and accuracy. As a final step in this part, we merged the two subrreddit data frames into one for a much-streamlined analysis. 
+Part 3. EDA: Here we begin to explore the clean data and get an idea of how these features alone and in combination with other complimentary features may affect our ultimate goal of proper text classification. Using a simple CountVectorizor , we sought to find common words within each subbredit as well as the corpus. Words such as just', 'know', 'time', and 'going', looked to be common words shared between both subreddits.
 
-**Visualizations**
-- Are sufficient visualizations provided?
-- Do plots accurately demonstrate valid relationships?
-- Are plots labeled properly?
-- Are plots interpreted appropriately?
-- Are plots formatted and scaled appropriately for inclusion in a notebook-based technical report?
+__Part 4a.__ Preprocessing: We took our cleaned data and tokenized, lemmatized, and stemmed the respective text data and created respective columns for each. From that we used a  TF-IDF transformer to reduce any influence common words, within each of the text data variations, may have on our model. This preprocessing step is performed in order to reduce bias in our models and achieve higher accuracy scores. 
+Part 4b. Modeling: We used Logistic Regression and Random Forest Classification models. 
 
-**Python Syntax and Control Flow**
-- Is care taken to write human readable code?
-- Is the code syntactically correct (no runtime errors)?
-- Does the code generate desired results (logically correct)?
-- Does the code follows general best practices and style guidelines?
-- Are Pandas functions used appropriately?
-- Are `sklearn` and `NLTK` methods used appropriately?
+## Conclusion 
 
-**Presentation**
-- Is the problem statement clearly presented?
-- Does a strong narrative run through the presentation building toward a final conclusion?
-- Are the conclusions/recommendations clearly stated?
-- Is the level of technicality appropriate for the intended audience?
-- Is the student substantially over or under time?
-- Does the student appropriately pace their presentation?
-- Does the student deliver their message with clarity and volume?
-- Are appropriate visualizations generated for the intended audience?
-- Are visualizations necessary and useful for supporting conclusions/explaining findings?
+With a common set of constraints across “raw” posts, lemmatized posts, and stemmed posts we achieved the following results:
+* Based on the accuracy scores, misclassification rate, specificity score, and sensitivity score our logistic regression model with stemmed text data, performed the best and increased our precision of proper classification of subreddit posts.
+
+* Based on the accuracy scores, our RF model with stemmed text data, performed the best and increased our precision of properly classifying our subreddit posts.
+
+* Out of the two models used, the Random Forest model yielded the best results.
+
+* Our stemmed words resulted in a higher accuracy score compared to the lemmatized words, score of 0.96 compared to 0.74.
+
+* For both models used it's evident the benefits of pre-processing the text data, either lemmatizing of stemming, in order to improve our model accuracy.
 
 
----
+__Next steps__
+We’d like to look not only at the posts but the related comments, what types of responses are these posts receiving , especially within the legal advice subreddit. Do  the responses contain legal terms, and also are these more factual or opinion based responses. 
 
-### Why did we choose this project for you?
-This project covers three of the biggest concepts we cover in the class: Classification Modeling, Natural Language Processing and Data Wrangling/Acquisition.
-
-Part 1 of the project focuses on **Data wrangling/gathering/acquisition**. This is a very important skill as not all the data you will need will be in clean CSVs or a single table in SQL.  There is a good chance that wherever you land you will have to gather some data from some unstructured/semi-structured sources; when possible, requesting information from an API, but often scraping it because they don't have an API (or it's terribly documented).
-
-Part 2 of the project focuses on **Natural Language Processing** and converting standard text data (like Titles and Comments) into a format that allows us to analyze it and use it in modeling.
-
-Part 3 of the project focuses on **Classification Modeling**.  Given that project 2 was a regression focused problem, we needed to give you a classification focused problem to practice the various models, means of assessment and preprocessing associated with classification.   
